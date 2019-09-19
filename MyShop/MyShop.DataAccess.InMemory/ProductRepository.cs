@@ -42,6 +42,7 @@ namespace MyShop.DataAccess.InMemory
                 productToUpdate = product; 
             }
         }
+
         public Product Find(string Id)
         {
             Product product = products.Find(p => p.Id == Id);
@@ -55,10 +56,12 @@ namespace MyShop.DataAccess.InMemory
                 return product;
             }
         }
+
         public IQueryable<Product> Collection()
         {
             return products.AsQueryable();
         }
+
         public void Delete(string Id)
         {
             Product productToDelete = products.Find(p => p.Id == Id);
