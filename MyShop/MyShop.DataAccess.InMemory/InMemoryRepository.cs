@@ -70,9 +70,9 @@ namespace MyShop.DataAccess.InMemory
             return items.AsQueryable();
         }
 
-        public void Delete(T t)
+        public void Delete(String Id)
         {
-            T tToDelete = items.Find(i => i.Id == t.Id);
+            T tToDelete = items.Find(i => i.Id == Id);
             if (null == tToDelete)
             {
                 throw new Exception(className + " Not Found");
