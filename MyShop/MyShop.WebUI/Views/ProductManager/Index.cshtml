@@ -43,8 +43,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Category)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Image)
+        </td>*@
+        <td>
+            <img class="img-thumbnail" style="height:50px" src="~/Content/ProductImages/@item.Image" alt="@item.Name"/>
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
