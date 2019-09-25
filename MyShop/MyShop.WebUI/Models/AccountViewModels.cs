@@ -79,6 +79,23 @@ namespace MyShop.WebUI.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        [StringLength(20, ErrorMessage = "Maximum 20 characters allowed")]
+        public string FirstName { get; set; }
+        [Required]
+        [StringLength(20, ErrorMessage = "Maximum 20 characters allowed")]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+        [Required]
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        [Required]
+        [Display(Name = "Zip code")]
+        [StringLength(6, ErrorMessage = "The zipcode must have 6 characters", MinimumLength = 6)]
+        public string ZipCode { get; set; }
     }
 
     public class ResetPasswordViewModel
