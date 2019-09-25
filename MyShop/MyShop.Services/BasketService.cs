@@ -28,7 +28,7 @@ namespace MyShop.Services
 
             Basket basket = new Basket();
 
-            if(null!= cookie)
+            if(null != cookie)
             {
                 string basketId = cookie.Value;
                 if (!string.IsNullOrEmpty(basketId))
