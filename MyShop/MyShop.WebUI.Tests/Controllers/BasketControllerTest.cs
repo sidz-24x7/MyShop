@@ -20,11 +20,14 @@ namespace MyShop.WebUI.Tests.Controllers
             //Setup
             IRepository<Basket> baskets = new MockContext<Basket>();
             IRepository<Product> products = new MockContext<Product>();
+            IRepository<Order> order = new MockContext<Order>();
 
             var httpContext = new MockHttpContext();
 
             IBasketService basketService = new BasketService(products, baskets);
-            var controller = new BasketController(basketService);
+            IOrderService orderService = new OrderService(order);
+
+            var controller = new BasketController(basketService, orderService);
             controller.ControllerContext = new System.Web.Mvc.ControllerContext(httpContext, new System.Web.Routing.RouteData(), controller);
 
             //Act
@@ -45,6 +48,7 @@ namespace MyShop.WebUI.Tests.Controllers
             //Setup
             IRepository<Basket> baskets = new MockContext<Basket>();
             IRepository<Product> products = new MockContext<Product>();
+            IRepository<Order> order = new MockContext<Order>();
 
             var httpContext = new MockHttpContext();
 
@@ -52,12 +56,15 @@ namespace MyShop.WebUI.Tests.Controllers
             products.Insert(new Product() { Id = "2", Price = 5.00m });
 
             Basket basket = new Basket();
+
             basket.BasketItems.Add(new BasketItem() { ProductId = "1", Quantity = 2 });
             basket.BasketItems.Add(new BasketItem() { ProductId = "2", Quantity = 1 });
             baskets.Insert(basket);
 
             IBasketService basketService = new BasketService(products, baskets);
-            var controller = new BasketController(basketService);
+            IOrderService orderService = new OrderService(order);
+
+            var controller = new BasketController(basketService, orderService);
 
             httpContext.Request.Cookies.Add(new System.Web.HttpCookie("eCommerceBasket") { Value = basket.Id });
             controller.ControllerContext = new System.Web.Mvc.ControllerContext(httpContext, new System.Web.Routing.RouteData(), controller);
