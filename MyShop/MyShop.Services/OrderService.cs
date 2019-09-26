@@ -19,7 +19,7 @@ namespace MyShop.Services
 
         public void CreateOrder(Order baseOrder, List<BasketItemViewModel> basketItems)
         {
-            foreach(var item in basketItems)
+            foreach (var item in basketItems)
             {
                 baseOrder.OrderItems.Add(new OrderItem()
                 {
@@ -29,9 +29,10 @@ namespace MyShop.Services
                     ProductName = item.ProductName,
                     Quantity = item.Quantity
                 });
-                orderContext.Insert(baseOrder);
-                orderContext.Commit();
+
             }
+            orderContext.Insert(baseOrder);
+            orderContext.Commit();
         }
     }
 }
