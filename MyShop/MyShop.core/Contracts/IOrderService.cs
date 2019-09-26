@@ -11,5 +11,8 @@ namespace MyShop.core.Contracts
     public interface IOrderService
     {
         void CreateOrder(Order baseOrder, List<BasketItemViewModel> basketItems);
+        List<Order> GetOrderList();
+        Order Getorder(string Id);
+        void UpdateOrder(Order updateOrder);
     }
 }
